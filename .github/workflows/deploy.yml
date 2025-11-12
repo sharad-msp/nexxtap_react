@@ -1,38 +1,43 @@
-name: Deploy React App to Server
+name: 🚀 Deploy React App to Staging Server
 
 on:
   push:
     branches:
-      - develop
+      - develop   # only runs on develop branch
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: 🧾 Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
 
-      - name: Install dependencies
+      # 👉 If your React app is inside a subfolder, change `working-directory: ./frontend`
+      - name: 📦 Install dependencies
         run: npm ci
+        working-directory: ./
 
-      - name: Build project
+      - name: 🏗️ Build project
         run: npm run build
+        working-directory: ./
 
-      - name: Deploy via SSH
+      # ⚠️ Ensure build folder name is correct ("build" for CRA, "dist" for Vite)
+      - name: 🚚 Deploy to Staging via SCP
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "build/*"
+          source: "dist/*"
           target: ${{ secrets.DEPLOY_PATH }}
           strip_components: 1
-      - name: Verify deployment (optional)
-        run: echo "✅ Staging deployed to ${{ secrets.DEPLOY_PATH }} on ${{ secrets.SERVER_IP }}"
+
+      - name: ✅ Verify deployment
+        run: echo "✅ Staging deployed to ${{ secrets.SERVER_IP }}:${{ secrets.DEPLOY_PATH }}"
