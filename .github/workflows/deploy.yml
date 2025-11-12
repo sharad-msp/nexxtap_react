@@ -29,8 +29,10 @@ jobs:
       - name: Verify build output
         run: |
           ls -la dist
+          
       - name : 📦 Install SCP Action
         run: echo "✅ Deployed serve credentials on ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:${{ secrets.DEPLOY_PATH }}"
+
       - name: 🚚 Deploy via SCP
         uses: appleboy/scp-action@v0.1.4
         with:
