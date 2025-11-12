@@ -28,13 +28,12 @@ jobs:
 
       - name: 🚚 Deploy via SCP
         uses: appleboy/scp-action@v0.1.4
-        port: 8016
-        
         with:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "dist/*"   # ✅ vite output
+          port: 8016              # ✅ Put port here, under "with"
+          source: "build/*"
           target: ${{ secrets.DEPLOY_PATH }}
           strip_components: 1
 
