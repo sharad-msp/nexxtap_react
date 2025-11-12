@@ -1,0 +1,289 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Toast Animations */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.toast-enter {
+  animation: slideInRight 0.3s ease-out forwards;
+}
+
+.toast-exit {
+  animation: slideOutRight 0.3s ease-out forwards;
+}
+
+/* Standardized Component Heights */
+@layer components {
+  /* Standard button heights */
+  .btn-sm {
+    @apply h-8 px-3 text-xs;
+  }
+  
+  .btn-md {
+    @apply h-10 px-4 text-sm;
+  }
+  
+  .btn-lg {
+    @apply h-12 px-6 text-base;
+  }
+  
+  /* Standard input/select heights */
+  .input-sm {
+    @apply h-8 px-3 text-xs;
+  }
+  
+  .input-md {
+    @apply h-10 px-4 text-sm;
+  }
+  
+  .input-lg {
+    @apply h-12 px-4 text-base;
+  }
+  
+  /* Standard dropdown heights */
+  .dropdown-sm {
+    @apply h-8 px-3 text-xs;
+  }
+  
+  .dropdown-md {
+    @apply h-10 px-4 text-sm;
+  }
+  
+  .dropdown-lg {
+    @apply h-12 px-4 text-base;
+  }
+  
+  /* Icon button heights */
+  .icon-btn-sm {
+    @apply h-8 w-8;
+  }
+  
+  .icon-btn-md {
+    @apply h-10 w-10;
+  }
+  
+  .icon-btn-lg {
+    @apply h-12 w-12;
+  }
+  
+  /* Sidebar scrollbar theming */
+  .sidebar-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #4b5563 #1f2937;
+  }
+  
+  .sidebar-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .sidebar-scrollbar::-webkit-scrollbar-track {
+    background: #1f2937;
+    border-radius: 3px;
+  }
+  
+  .sidebar-scrollbar::-webkit-scrollbar-thumb {
+    background: #4b5563;
+    border-radius: 3px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .sidebar-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+  }
+  
+  .sidebar-scrollbar::-webkit-scrollbar-thumb:active {
+    background: #9ca3af;
+  }
+  
+  /* Category dropdown scroll height */
+  .max-h-48 {
+    max-height: 11rem !important;
+  }
+}
+
+/* SweetAlert2 Custom Styles */
+.swal2-popup-custom {
+  @apply rounded-lg border border-gray-200 shadow-xl;
+}
+
+.swal2-title-custom {
+  @apply text-xl font-semibold text-gray-900;
+}
+
+.swal2-html-custom {
+  @apply text-gray-700;
+}
+
+.swal2-confirm-custom {
+  @apply bg-green-600 hover:bg-green-700 text-white font-medium px-4 py-2 rounded-lg transition-colors;
+}
+
+.swal2-cancel-custom {
+  @apply bg-red-600 hover:bg-red-700 text-white font-medium px-4 py-2 rounded-lg transition-colors;
+}
+
+/* Custom Blue Color Override for Indigo */
+.bg-indigo-600 {
+  --tw-bg-opacity: 1;
+  background-color: #0000FF !important;
+}
+
+.bg-indigo-700 {
+  --tw-bg-opacity: 1;
+  background-color: #0000CC !important;
+}
+
+.bg-indigo-50 {
+  --tw-bg-opacity: 1;
+  background-color: #F0F8FF !important;
+}
+
+.bg-indigo-100 {
+  --tw-bg-opacity: 1;
+  background-color: #E6F3FF !important;
+}
+
+.text-indigo-600 {
+  --tw-text-opacity: 1;
+  color: #0000FF !important;
+}
+
+.text-indigo-700 {
+  --tw-text-opacity: 1;
+  color: #0000CC !important;
+}
+
+.border-indigo-200 {
+  --tw-border-opacity: 1;
+  border-color: #B3D9FF !important;
+}
+
+.border-indigo-500 {
+  --tw-border-opacity: 1;
+  border-color: #0066FF !important;
+}
+
+.hover\:bg-indigo-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: #0000CC !important;
+}
+
+.focus\:ring-indigo-500:focus {
+  --tw-ring-color: #0066FF !important;
+}
+
+/* Additional Indigo Color Overrides */
+.hover\:bg-indigo-600:hover {
+  --tw-bg-opacity: 1;
+  background-color: #0000FF !important;
+}
+
+.hover\:bg-indigo-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: #0000CC !important;
+}
+
+.hover\:bg-indigo-50:hover {
+  --tw-bg-opacity: 1;
+  background-color: #F0F8FF !important;
+}
+
+.hover\:bg-indigo-100:hover {
+  --tw-bg-opacity: 1;
+  background-color: #E6F3FF !important;
+}
+
+.hover\:text-indigo-600:hover {
+  --tw-text-opacity: 1;
+  color: #0000FF !important;
+}
+
+.hover\:text-indigo-700:hover {
+  --tw-text-opacity: 1;
+  color: #0000CC !important;
+}
+
+.hover\:border-indigo-200:hover {
+  --tw-border-opacity: 1;
+  border-color: #B3D9FF !important;
+}
+
+.hover\:border-indigo-500:hover {
+  --tw-border-opacity: 1;
+  border-color: #0066FF !important;
+}
+
+/* Additional indigo color variations */
+.bg-indigo-500 {
+  --tw-bg-opacity: 1;
+  background-color: #0066FF !important;
+}
+
+.bg-indigo-200 {
+  --tw-bg-opacity: 1;
+  background-color: #B3D9FF !important;
+}
+
+.text-indigo-500 {
+  --tw-text-opacity: 1;
+  color: #0066FF !important;
+}
+
+.text-indigo-400 {
+  --tw-text-opacity: 1;
+  color: #4D9FFF !important;
+}
+
+.border-indigo-300 {
+  --tw-border-opacity: 1;
+  border-color: #99CCFF !important;
+}
+
+.border-indigo-400 {
+  --tw-border-opacity: 1;
+  border-color: #80BFFF !important;
+}
+
+.focus\:ring-indigo-400:focus {
+  --tw-ring-color: #4D9FFF !important;
+}
+
+.focus\:ring-indigo-600:focus {
+  --tw-ring-color: #0000FF !important;
+}
+
+/* Blue Color Overrides for Toast */
+.bg-blue-600 {
+  --tw-bg-opacity: 1;
+  background-color: #0000FF !important;
+}
+
+.border-blue-700 {
+  --tw-border-opacity: 1;
+  border-color: #0000CC !important;
+}
+
+.focus\:border-indigo-500:focus {
+  border-color: #0000FF !important;
+}
