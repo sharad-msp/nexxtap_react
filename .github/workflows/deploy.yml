@@ -39,5 +39,6 @@ jobs:
           target: ${{ secrets.DEPLOY_PATH }}
           strip_components: 1
 
+          
       - name: ✅ Verify deployment
         run: echo "✅ Staging deployed to ${{ secrets.SERVER_IP }}:${{ secrets.DEPLOY_PATH }}"
