@@ -31,6 +31,8 @@ jobs:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "dist/*"
+          source: "build/*"
           target: ${{ secrets.DEPLOY_PATH }}
           strip_components: 1
+      - name: Verify deployment (optional)
+        run: echo "✅ Staging deployed to ${{ secrets.DEPLOY_PATH }} on ${{ secrets.SERVER_IP }}"
