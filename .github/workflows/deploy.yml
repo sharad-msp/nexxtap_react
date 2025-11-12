@@ -9,30 +9,19 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        shell: bash
     steps:
       - name: 🧾 Checkout repository
         uses: actions/checkout@v4
-
-      - name: Verify files
-        run: ls -la
-        
 
       - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
-          cache-dependency-path: package-lock.json  # 👈 update this too
+          cache-dependency-path: package-lock.json
 
-      - name: Debug repo structure
-        run: ls -R
-
-
-      - name: Install dependencies
-        run: npm install
+      - name: 🧩 Install dependencies workflow
+        run: npm ci
 
       - name: 🏗️ Build project
         run: npm run build
@@ -43,7 +32,7 @@ jobs:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "build/*"   # 👈 folder where build is generated
+          source: "dist/*"   # ✅ vite output
           target: ${{ secrets.DEPLOY_PATH }}
           strip_components: 1
 
