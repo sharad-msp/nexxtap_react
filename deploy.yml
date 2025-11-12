@@ -11,7 +11,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: ./   # 👈 set working directory here
+        shell: bash
     steps:
       - name: 🧾 Checkout repository
         uses: actions/checkout@v4
