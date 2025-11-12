@@ -25,6 +25,10 @@ jobs:
 
       - name: 🏗️ Build project
         run: npm run build
+        
+      - name: Verify build output
+        run: |
+          ls -la dist
 
       - name: 🚚 Deploy via SCP
         uses: appleboy/scp-action@v0.1.4
@@ -33,7 +37,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 8016              # ✅ Put port here, under "with"
-          source: "build/*"
+          source: "dist/*"                 # ✅ Vite outputs here
           target: ${{ secrets.DEPLOY_PATH }}
           strip_components: 1
 
